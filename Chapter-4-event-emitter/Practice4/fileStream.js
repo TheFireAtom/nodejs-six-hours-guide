@@ -1,19 +1,24 @@
 const fsPromises = require("fs.Promises").promises;
 const fs = require("fs");
 const path = require("path");
-const { login, password } = require("./myReadline");
+// const { loginVar, passwordVar } = require("./myReadline");
+const { dataArray, newUser } = require("./json")
 
-const filePath = path.join(__dirname, "data.txt");
+const filePath = path.join(__dirname, "data.json");
+
+const dataArrayStr = JSON.stringify(dataArray);
 
 const myFile = async () => {
     try {
         if (!fs.existsSync(filePath)) {
-            await fs.Promises.writeFile(filePath, `\n${login}\n${password}\n`, { encoding:"utf8" });
+            await fsPromises.writeFile(filePath, dataArrayStr, { encoding:"utf8" });
             console.log("Data has been successfully written in a new file.");
         }
 
         else if (fs.existsSync(filePath)) {
-            await fs.Promises.appendFile(filePath, `\n${login}\n${password}\n`, { encoding:"utf8" });
+            // const dataArrayParsed = JSON.parse(dataArray);
+            // dataArrayParsed.push(newUser());
+            await fsPromises.appendFile(filePath, newUser(), { encoding:"utf8" });
             console.log("Data has been successfully written in a file.");
         }
 
@@ -23,6 +28,3 @@ const myFile = async () => {
 }
 
 module.exports = myFile;
-
-
-
