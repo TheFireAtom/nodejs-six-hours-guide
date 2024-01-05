@@ -1,6 +1,6 @@
 // const fs = require("fs");
 // const path = require("path");
-const { loginVar, passwordVar } = require("./myReadline");
+// const { loginVar, passwordVar } = require("./myReadline");
 
 const dataArray = [
     {
@@ -11,19 +11,19 @@ const dataArray = [
 ];
 
 function idGenerator() {
-    for (let i = 0; i < dataArray.length(); i++) {
+    for (let i = 0; i < dataArray.length; i++) {
         dataArray.forEach((dataArray, i) => {
-            if (dataArray[i].id == dataArray.length()) {
+            if (dataArray[i].id == dataArray.length) {
                 return dataArray.length();
             }
         });
     }
 }
 
-function loginCheck() {
-    for (let i = 0; i < dataArray.length(); i++) {
+function loginCheck(dataArray, login) {
+    for (let i = 0; i < dataArray.length; i++) {
         dataArray.forEach((dataArray, i) => {
-            if ((dataArray[i].login === loginVar) && (dataArray[i].login.toLowerCase() === loginVar)) {
+            if ((dataArray[i].login === login) && (dataArray[i].login.toLowerCase() === login)) {
                 console.log("Specified login already exist");
                 return true;
             }
@@ -34,16 +34,16 @@ function loginCheck() {
     }
 }
 
-function newUser() {
-    if (loginCheck) {
+function newUser(login, password) {
+    if (loginCheck(dArr)) {
         const data = {
             id: idGenerator(),
-            login: loginVar,
-            password: passwordVar
+            login: login,
+            password: password
         };
         // dataArray.append(data);
         return data;
     }
 }
 
-module.exports = { dataArray, newUser };
+module.exports = { dataArray, newUser, loginCheck };

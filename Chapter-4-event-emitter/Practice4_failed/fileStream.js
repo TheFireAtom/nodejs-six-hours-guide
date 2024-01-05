@@ -1,14 +1,14 @@
-const fsPromises = require("fs.Promises").promises;
+const fsPromises = require("fs").promises;
 const fs = require("fs");
 const path = require("path");
 // const { loginVar, passwordVar } = require("./myReadline");
-const { dataArray, newUser } = require("./json")
+const { dataArray, newUser, loginCheck } = require("./json")
 
 const filePath = path.join(__dirname, "data.json");
 
 const dataArrayStr = JSON.stringify(dataArray);
 
-const myFile = async () => {
+const myFile = async (login, password) => {
     try {
         if (!fs.existsSync(filePath)) {
             await fsPromises.writeFile(filePath, dataArrayStr, { encoding:"utf8" });
@@ -16,10 +16,13 @@ const myFile = async () => {
         }
 
         else if (fs.existsSync(filePath)) {
-            // const dataArrayParsed = JSON.parse(dataArray);
-            // dataArrayParsed.push(newUser());
-            await fsPromises.appendFile(filePath, newUser(), { encoding:"utf8" });
-            console.log("Data has been successfully written in a file.");
+            if (loginCheck(dataArray, login)) {
+                await fsPromises.appendFile(filePath, newUser(login, password), { encoding:"utf8" });
+                console.log("Data has been successfully written in a file.");
+            } else {
+                console.log("Specified login already exist");
+            }
+            
         }
 
     } catch (err) {
