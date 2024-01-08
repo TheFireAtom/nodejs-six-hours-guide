@@ -13,6 +13,12 @@ const { EventEmitter } = require("events");
 const eventEmitter = new EventEmitter();
 const PORT = 3000;
 const server = http.createServer((req, res) => {
+    req.statusCode = 200;
+    req.writeHead({"Content-Type": "text/plain"});
+    res.end()
+});
 
-})
+server.listen(PORT, () => {
+    console.log("Server is currently running at port ", PORT);
+});
 
