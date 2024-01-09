@@ -10,3 +10,11 @@ body {
     text-align: center;
     justify-content: center;
 }
+
+h1 {
+    font-size: 100px;
+}
+
+img {
+    background-size: cover;
+}
