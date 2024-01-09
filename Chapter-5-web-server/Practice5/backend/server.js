@@ -18,7 +18,15 @@ const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-g
 // const filePath = path.join(__dirname, fileName());
 const server = http.createServer((req, res) => {
 
-    const filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
+    let filePath;
+    
+    if (req.url.endsWith(".css")) {
+        filePath = path.join(frontDir, "/css/global.css");
+    } else {
+        filePath = path.join(frontDir, req.url === "/" ? `/html/main.css` : req.url);
+    }
+
+    // const filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
     const extName = path.extname(filePath).toLowerCase();
     let contentType;
     switch (extName) {
