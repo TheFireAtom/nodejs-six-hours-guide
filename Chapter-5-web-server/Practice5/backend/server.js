@@ -62,6 +62,7 @@ const server = http.createServer((req, res) => {
         if (err) {
             res.writeHead(404, { "Content-Type": contentType });
             console.error("Error has occured: ", err);
+            eventEmitter.emit("log", `${err.code}: ${err.message}`, "errLog.txt");
             res.end();
         } else {
             res.writeHead(200, { "Content-Type": contentType});
