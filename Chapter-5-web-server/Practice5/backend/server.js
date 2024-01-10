@@ -11,6 +11,11 @@ const { EventEmitter } = require("events");
 const logEvents = require("./logEvents");
 const eventEmitter = new EventEmitter();
 
+// event emitter
+eventEmitter.on("logs", (message, logName) => {
+    logEvents(message, logName);
+});
+
 // server, server info and server listener
 const PORT = 3000;
 const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend";

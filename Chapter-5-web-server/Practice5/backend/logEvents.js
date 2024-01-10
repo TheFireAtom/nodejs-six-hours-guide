@@ -27,10 +27,10 @@ const logEvents = async (message, logName) => {
 }
 
 // Test
-const message = "ENOENT: no such file or directory";
-const logName = "logName";
+// const message = "ENOENT: no such file or directory";
+// const logName = "logName";
 
-logEvents(message, logName);
+// logEvents(message, logName);
 
 // Export
 module.exports = logEvents;
