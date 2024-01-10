@@ -8,9 +8,10 @@ const fsPromises = require('fs').promises;
 
 // other requirements 
 const { EventEmitter } = require("events");
+const logEvents = require("./logEvents");
+const eventEmitter = new EventEmitter();
 
 // server, server info and server listener
-const eventEmitter = new EventEmitter();
 const PORT = 3000;
 const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend";
 // const frontDirHTML = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend/html";
@@ -18,12 +19,16 @@ const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-g
 // const filePath = path.join(__dirname, fileName());
 const server = http.createServer((req, res) => {
 
+    eventEmitter.emit("logs", `${req.url}${req.method}`, "logName.txt");
+
+    // eventEmitter.on("log", (message, logName) => logEvents(message, logName));
+
     let filePath;
     
     if (req.url.endsWith(".css")) {
         filePath = path.join(frontDir, "/css/global.css");
     } else {
-        filePath = path.join(frontDir, req.url === "/" ? `/html/main.css` : req.url);
+        filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
     }
 
     // const filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
@@ -55,11 +60,11 @@ const server = http.createServer((req, res) => {
 
     fs.readFile(filePath, (err, content) => {
         if (err) {
-            res.statusCode = 404;
+            res.writeHead(404, { "Content-Type": contentType });
             console.error("Error has occured: ", err);
             res.end();
         } else {
-            res.setHeader(200, { "Content-Type": contentType});
+            res.writeHead(200, { "Content-Type": contentType});
             res.end(content, "utf8");
         }
     });
@@ -67,7 +72,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`Server is currently running at: http://localhost${PORT}/`);
+    console.log(`Server is currently running at: http://localhost:${PORT}/`);
 });
-
-console.log(__dirname);
