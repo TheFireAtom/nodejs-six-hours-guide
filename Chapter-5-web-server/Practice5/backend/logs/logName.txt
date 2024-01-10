@@ -1,0 +1,4 @@
+10-01-2024	06:31:20	97424bc0-975e-4752-88df-94dd0a2c386a	/	GET
+10-01-2024	06:31:20	0a429437-9c03-4924-8ccf-de6d905587f9	/css/global.css	GET
+10-01-2024	06:31:21	525fb761-f9c3-4dd5-adf4-95ce4fd12ede	/html/subdir/page1.html	GET
+10-01-2024	06:31:21	ed96132e-ce32-46a1-ab58-5debf7587a6f	/html/subdir/css/global.css	GET

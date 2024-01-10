@@ -24,56 +24,65 @@ const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-g
 // const filePath = path.join(__dirname, fileName());
 const server = http.createServer((req, res) => {
 
-    eventEmitter.emit("logs", `${req.url}${req.method}`, "logName.txt");
+    try {
+
+        let filePath;
+    
+        if (req.url.endsWith(".css")) {
+            filePath = path.join(frontDir, "/css/global.css");
+        } else {
+            filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
+        }
+    
+        // const filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
+        const extName = path.extname(filePath).toLowerCase();
+        let contentType;
+        switch (extName) {
+            case ".css":
+                contentType = "text/css";
+                break;
+            case ".js":
+                contentType = "text/javascript";
+                break;
+            case ".json":
+                contentType = "application/json";
+                break;
+            case ".jpeg":
+                contentType = "image/jpeg";
+                break;
+            case ".png":
+                contentType = "image/png";
+                break;
+            case ".gif":
+                contentType = "image/gif";
+                break;
+            default:
+                contentType = "text/html";
+                break;
+        }
+
+    
+        fs.readFile(filePath, (err, content) => {
+            if (err) {
+                res.writeHead(404, { "Content-Type": contentType });
+                console.error("Error has occured: ", err);
+                eventEmitter.emit("logs", `${err.code}: ${err.message}`, "errLog.txt");
+                res.end();
+            } else {
+                res.writeHead(200, { "Content-Type": contentType});
+                eventEmitter.emit("logs", `${req.url}\t${req.method}`, "logName.txt");
+                res.end(content, "utf8");
+            }
+        });
+    } catch (err) {
+        eventEmitter.emit("log", `${err.code}: ${err.message}`, "errLog.txt");
+    }
+
+    
 
     // eventEmitter.on("log", (message, logName) => logEvents(message, logName));
 
-    let filePath;
     
-    if (req.url.endsWith(".css")) {
-        filePath = path.join(frontDir, "/css/global.css");
-    } else {
-        filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
-    }
-
-    // const filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
-    const extName = path.extname(filePath).toLowerCase();
-    let contentType;
-    switch (extName) {
-        case ".css":
-            contentType = "text/css";
-            break;
-        case ".js":
-            contentType = "text/javascript";
-            break;
-        case ".json":
-            contentType = "application/json";
-            break;
-        case ".jpeg":
-            contentType = "image/jpeg";
-            break;
-        case ".png":
-            contentType = "image/png";
-            break;
-        case ".gif":
-            contentType = "image/gif";
-            break;
-        default:
-            contentType = "text/html";
-            break;
-    }
-
-    fs.readFile(filePath, (err, content) => {
-        if (err) {
-            res.writeHead(404, { "Content-Type": contentType });
-            console.error("Error has occured: ", err);
-            eventEmitter.emit("log", `${err.code}: ${err.message}`, "errLog.txt");
-            res.end();
-        } else {
-            res.writeHead(200, { "Content-Type": contentType});
-            res.end(content, "utf8");
-        }
-    });
 
 });
 
