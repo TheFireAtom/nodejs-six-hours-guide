@@ -24,8 +24,6 @@ const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-g
 // const filePath = path.join(__dirname, fileName());
 const server = http.createServer((req, res) => {
 
-    try {
-
         let filePath;
     
         if (req.url.endsWith(".css")) {
@@ -61,12 +59,11 @@ const server = http.createServer((req, res) => {
                 break;
         }
 
-    
         fs.readFile(filePath, (err, content) => {
             if (err) {
                 res.writeHead(404, { "Content-Type": contentType });
                 console.error("Error has occured: ", err);
-                eventEmitter.emit("logs", `${err.code}: ${err.message}`, "errLog.txt");
+                eventEmitter.emit("logs", `${err.code}\t${err.message}`, "errLog.txt");
                 res.end();
             } else {
                 res.writeHead(200, { "Content-Type": contentType});
@@ -74,15 +71,20 @@ const server = http.createServer((req, res) => {
                 res.end(content, "utf8");
             }
         });
-    } catch (err) {
-        eventEmitter.emit("log", `${err.code}: ${err.message}`, "errLog.txt");
-    }
 
-    
+    // try {
+    //     if (!err) {
+    //         res.writeHead(200, { "Content-Type": contentType });
+    //         eventEmitter.emit("logs", `${req.url}\t${req.method}`, "messageLog.txt");
+    //         res.end(content, "utf-8");
+    //     }
 
-    // eventEmitter.on("log", (message, logName) => logEvents(message, logName));
-
-    
+    // } catch (err) {
+    //     res.writeHead(404, { "Content-Type": contentType });
+    //     console.error("Error has occured: ", err);
+    //     eventEmitter.emit("logs", `${err.code}: ${err.message}`, "errLog.txt");
+    //     res.end(content, "utf8");
+    // }
 
 });
 
