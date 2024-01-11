@@ -1,93 +1,71 @@
-// Main server
+// server with expressjs
 
-// nodejs requirements
-const http = require('http');
-const path = require('path');
-const fs = require('fs');
-const fsPromises = require('fs').promises;
+// requirements and another constants
+const express = require("express");
+const app = express();
+const path = require("path");
+const PORT = process.env.PORT || 3000;
+const frontendPath = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-6-intro-to-expressjs-framework/Practice6/frontend";
 
-// other requirements 
-const { EventEmitter } = require("events");
-const logEvents = require("./logEvents");
-const eventEmitter = new EventEmitter();
-
-// event emitter
-eventEmitter.on("logs", (message, logName) => {
-    logEvents(message, logName);
+// main files
+app.get("^/$|/main(.html)?", (req, res) => {
+    res.sendFile(path.join(frontendPath, "html", "main.html"));
 });
 
-// server, server info and server listener
-const PORT = 3000;
-const frontDir = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend";
-// const frontDirHTML = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend/html";
-// const frontDirCSS = "/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend/css";
-// const filePath = path.join(__dirname, fileName());
-const server = http.createServer((req, res) => {
-
-        let filePath;
-    
-        if (req.url.endsWith(".css")) {
-            filePath = path.join(frontDir, "/css/global.css");
-        } else {
-            filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
-        }
-    
-        // const filePath = path.join(frontDir, req.url === "/" ? `/html/main.html` : req.url);
-        const extName = path.extname(filePath).toLowerCase();
-        let contentType;
-        switch (extName) {
-            case ".css":
-                contentType = "text/css";
-                break;
-            case ".js":
-                contentType = "text/javascript";
-                break;
-            case ".json":
-                contentType = "application/json";
-                break;
-            case ".jpeg":
-                contentType = "image/jpeg";
-                break;
-            case ".png":
-                contentType = "image/png";
-                break;
-            case ".gif":
-                contentType = "image/gif";
-                break;
-            default:
-                contentType = "text/html";
-                break;
-        }
-
-        fs.readFile(filePath, (err, content) => {
-            if (err) {
-                res.writeHead(404, { "Content-Type": contentType });
-                console.error("Error has occured: ", err);
-                eventEmitter.emit("logs", `${err.code}\t${err.message}`, "errLog.txt");
-                res.end();
-            } else {
-                res.writeHead(200, { "Content-Type": contentType});
-                eventEmitter.emit("logs", `${req.url}\t${req.method}`, "logName.txt");
-                res.end(content, "utf8");
-            }
-        });
-
-    // try {
-    //     if (!err) {
-    //         res.writeHead(200, { "Content-Type": contentType });
-    //         eventEmitter.emit("logs", `${req.url}\t${req.method}`, "messageLog.txt");
-    //         res.end(content, "utf-8");
-    //     }
-
-    // } catch (err) {
-    //     res.writeHead(404, { "Content-Type": contentType });
-    //     console.error("Error has occured: ", err);
-    //     eventEmitter.emit("logs", `${err.code}: ${err.message}`, "errLog.txt");
-    //     res.end(content, "utf8");
-    // }
-
+app.get("/page1(.html)?", (req, res) => {
+    res.sendFile(path.join(frontendPath, "html", "page1.html"));
 });
 
-server.listen(PORT, () => {
-    console.log(`Server is currently running at: http://localhost:${PORT}/`);
+app.get("/page2(.html)?", (req, res) => {
+    res.sendFile(path.join(frontendPath, "html", "page2.html"));
 });
+
+// additional files
+app.get("/new-page(.html)?", (req, res) => {
+    res.sendFile("./html/new-page.html", { root: frontendPath});
+});
+
+app.get("/old-page(.html)?", (req, res) => {
+    res.redirect(301, "/new-page.html");
+});
+
+// route handlers
+app.get("/hello(.html)?", (req, res, next) => {
+    console.log("Hello World!");
+    next();
+}, (req, res) => {
+    res.send("Next");
+});
+
+// chaining route handlers
+const one = (req, res, next) => {
+    console.log("one");
+    next();
+}
+
+const two = (req, res, next) => {
+    console.log("two");
+    next();
+}
+
+const three = (req, res, next) => {
+    console.log("three");
+    res.send("Counted to three");
+}
+
+app.get("/chain(.html)?", [one, two, three]);
+
+// non-existent direcories check
+// app.get("/*", (req, res) => {
+//     res.status(404).sendFile(path.join(frontendPath, "html", "404.html"));
+// });
+
+// app.get("/*", (req, res) => {
+//     res.status(404).sendFile("./html/404.html", { root: frontendPath });
+// });
+
+app.listen(PORT, () => {
+    console.log(`Server is running at: http://localhost:${PORT}`);
+});
+
+// console.log(path.join(frontendPath, "html", "main.html"));
