@@ -1,0 +1,1 @@
+10-01-2024	06:51:30	c4d11014-7253-40a6-a10d-3bbeca326c10	ENOENT	ENOENT: no such file or directory, open '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-5-web-server/Practice5/frontend/fake'
