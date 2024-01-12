@@ -1,0 +1,10 @@
+10-01-2024	06:51:33	f3e99ad2-bfe5-4b1d-8922-cc9e50e89a5d	/	GET
+10-01-2024	06:51:33	2fe00959-6cf7-4fb2-a2b7-03714bbe0be9	/css/global.css	GET
+10-01-2024	06:51:36	28fce198-143f-41b4-b214-03a5bf59f40a	/html/subdir/page1.html	GET
+10-01-2024	06:51:36	c7799b70-5831-423f-b371-9d1f1d48c18e	/html/subdir/css/global.css	GET
+10-01-2024	06:51:37	c2046c62-a505-43bc-843d-815e4c6180a8	/html/subdir/page2.html	GET
+10-01-2024	06:51:37	0970ed1b-cac8-44c5-a68a-051bc1d0af29	/html/subdir/css/global.css	GET
+10-01-2024	06:53:13	ad3fa6c3-fe90-4e15-9b29-9336815429ca	/html/subdir/page1.html	GET
+10-01-2024	06:53:13	6567096b-2204-43d1-a805-789688d4af2d	/html/subdir/css/global.css	GET
+10-01-2024	06:53:16	fd971ac0-cf92-423b-9095-a33f309aed37	/html/subdir/page2.html	GET
+10-01-2024	06:53:16	f6f5b3ff-a707-4d25-a652-a3208b1f6b91	/html/subdir/css/global.css	GET
