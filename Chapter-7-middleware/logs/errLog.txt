@@ -1,0 +1,1 @@
+20240113	21:38:18	111afae2-b90f-4bbe-995b-e085a4970f5b	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-7-middleware/views/index.html'
