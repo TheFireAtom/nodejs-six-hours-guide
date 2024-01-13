@@ -33,13 +33,15 @@ app.get("/old-page(.html)?", (req, res) => {
 
 // build-in middlewares (.use) 
 // for serving static files (like css and etc.)
-app.use(express.static(path.join(cssPath, "global.css")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 // for serving json files
 
 app.use(express.json());
 
 // for handling urlencoded data
+
+app.use(express.urlencoded({ extended: false }))
 
 // app listener
 

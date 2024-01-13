@@ -55,7 +55,6 @@ app.get('/hello(.html)?', (req, res, next) => {
     res.send('Hello World!');
 });
 
-
 // chaining route handlers
 const one = (req, res, next) => {
     console.log('one');
