@@ -1,7 +1,0 @@
-20240112	21:44:04	d66ebeeb-132b-4088-aaa6-5608d0497c91	GET	undefined	/
-20240112	21:44:04	7bc6c702-963c-475e-87ad-936698eceee5	GET	undefined	/css/style.css
-20240112	21:48:36	4e8fc62e-5f80-4e75-9037-33bcb339f93f	GET	undefined	/
-20240112	21:48:36	22da496e-6108-418a-bd65-a982c957fde9	GET	undefined	/css/style.css
-20240112	21:50:50	7343577a-9f8b-4478-a9d0-fa91819bbf3b	GET	undefined	/
-20240112	21:50:50	ef922017-009e-4617-a8d7-3681347576d2	GET	undefined	/css/style.css
-20240112	21:51:14	7c82cd3c-1d19-4be9-8440-2f7fb2fb771d	GET	https://www.google.com	/
