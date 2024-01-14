@@ -1,0 +1,9 @@
+14202024	19:20:25	1e1292bf-5786-436d-a1d2-deb1648d76dc	GET	https://www.google.com	/
+14282024	19:28:54	9304954f-f090-43fd-a3e9-344f3db5e152	GET	undefined	/page1.html
+14282024	19:28:54	2665b9f5-cfa9-4540-b94f-4d67958bda67	GET	undefined	/css/global.css
+14292024	19:29:04	f3d2a17d-30de-493a-9607-569f5d84a33a	GET	undefined	/page1.html
+14292024	19:29:04	959c49e6-532b-42ac-80ee-b3d88deef075	GET	undefined	/css/global.css
+14292024	19:29:13	428e2119-977e-45e1-9128-27fe7bebadfa	GET	undefined	/psadf
+14292024	19:29:13	29a426b0-8021-44a9-af71-e5cf3a71115f	GET	undefined	/css/global.css
+14292024	19:29:31	f2bd9ee7-c897-495f-a92f-d670320778cc	GET	https://www.google.com	/
+14292024	19:29:50	652b447f-ea51-4895-91dd-c2db369cd376	GET	https://www.google.com	/
