@@ -1,0 +1,6 @@
+14292024	19:29:31	57fac57c-ef90-49c3-89b0-1973eb837fc6	Error: Not allowed by CORS
+15372024	18:37:34	9c11d988-ea08-4af7-88b1-2ca919c40fc2	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/main.html'
+15382024	18:38:10	819095df-e34e-401d-93bf-4fb7d1fb4e9d	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/main.html'
+15382024	18:38:56	e3822a64-c3b1-40a2-915b-b0b85d791a3e	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/Practice8/main.html'
+15382024	18:38:57	fd0bcf63-9fe4-4f5f-b554-3ca90e1b18dd	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/Practice8/main.html'
+15392024	18:39:14	97bd542c-6115-4635-b7bc-e1e56296ac32	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/Practice8/main.html'
