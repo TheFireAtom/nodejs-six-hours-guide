@@ -4,3 +4,12 @@
 15382024	18:38:56	e3822a64-c3b1-40a2-915b-b0b85d791a3e	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/Practice8/main.html'
 15382024	18:38:57	fd0bcf63-9fe4-4f5f-b554-3ca90e1b18dd	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/Practice8/main.html'
 15392024	18:39:14	97bd542c-6115-4635-b7bc-e1e56296ac32	Error: ENOENT: no such file or directory, stat '/home/thefireatom/Documents/Coding_Projects/nodejs-six-hours-guide/Chapter-8-routing/Practice8/main.html'
+16322024	11:32:45	1284a2e8-a297-4b48-b04c-0fb5edd637f6	TypeError: data.employees.append is not a function
+16452024	11:45:57	64f36cc8-051f-40d1-9b64-7e9293312f47	TypeError: The "cb" argument must be of type function. Received undefined
+16462024	11:46:37	e6560821-f7d1-4260-9d9a-e4ea3b576dcb	TypeError: The "cb" argument must be of type function. Received undefined
+16462024	11:46:49	18fecdfe-d2fc-4601-9277-1dcb2c2af710	TypeError: The "cb" argument must be of type function. Received undefined
+16482024	11:48:13	ee18bdab-8778-4dd5-8e6e-dfecf7fc7683	TypeError: data.employees.push is not a function
+16502024	11:50:52	6611e3ed-04b5-4542-92e1-060a0dfdb828	TypeError: data.employees.push is not a function
+16562024	11:56:43	9059f86f-5575-4200-8706-05f747ae0880	TypeError: data.employees.push is not a function
+16562024	11:56:52	5f1b8b1f-48ff-4e39-ba46-f06d5e8f66d5	TypeError: data.employees.push is not a function
+16582024	11:58:42	bdc632e0-e519-4d3e-bdc4-e12467d6df59	TypeError: data.push is not a function
