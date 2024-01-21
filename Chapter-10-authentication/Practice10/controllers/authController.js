@@ -10,12 +10,12 @@ const handleLogin = async (req, res) => {
     if (!username || !password ) res.status(400).json({ "message": "Username and password are required"});
     // username handling
     const foundUser = userDB.users.find(user => user.username === username);
-    if (!foundUser) res.status(401).json({ "message": `User with username ${username} not found`});
+    if (!foundUser) res.sendStatus(401);
     // password handling
     const match = await bcrypt.compare(password, foundUser.password);
     if (match) {
         // creating JWT (in future)
-        res.status(200).json({ "success": `Username ${username} has been found!`};)
+        res.json({ "success": `Username ${username} has been found!`});
     } else {
         res.status(401);
     }
